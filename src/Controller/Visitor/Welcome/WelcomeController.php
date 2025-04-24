@@ -2,9 +2,10 @@
 
 namespace App\Controller\Visitor\Welcome;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Controller\Visitor\Welcome\WelcomeController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class WelcomeController extends AbstractController
 {
