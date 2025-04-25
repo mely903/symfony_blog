@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +47,7 @@ class EmailVerifier
         $this->verifyEmailHelper->validateEmailConfirmationFromRequest($request, (string) $user->getId(), (string) $user->getEmail());
 
         $user->setIsVerified(true);
+        $user->setVerifiedAt(new DateTimeImmutable());
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
