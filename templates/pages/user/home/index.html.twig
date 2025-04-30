@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Espace user</h1>
-    </body>
-</html>
+{% extends "themes/base_user.html.twig" %}
+
+{% block title %}Espace privé{% endblock %}
+
+{% block description %}Espace privé{% endblock %}
+
+{% block main %}
+    <h1 class="text-center my-3 display-5">Hello {{app.user.firstName}}</h1>
+{% endblock %}
