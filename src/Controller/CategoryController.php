@@ -82,5 +82,20 @@ final class CategoryController extends AbstractController
     }
 
 
-}
+    #[Route('/category/delete/{id<\d+>}', name: 'app_admin_category_delete', methods: ['POST'])]
+    public function delete(Category $category, Request $request, EntityManagerInterface $entityManager): Response
+    {
 
+        if ( $this->isCsrfTokenValid("delete_category_{$category->getId()}", $request->request->get('csrf_token'))) 
+        {
+            $categoryName = $category->getName();
+
+            $entityManager->remove($category);
+            $entityManager->flush();
+
+            $this->addFlash('success', "{$categoryName} a été supprimée.");
+        }
+
+        return $this->redirectToRoute('app_admin_category_index');
+    }
+}
